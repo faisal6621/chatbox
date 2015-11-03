@@ -41,9 +41,17 @@ public class ChatRoomDatabase
 
 	public void postNewMessage( final String newMessage )
 	{
-		Browser.withAllSessions( new Runnable() {
+		//		Browser.withAllSessions( new Runnable() {
+		//			public void run()
+		//			{
+		//				ScriptSessions.addFunctionCall( "newMessage", newMessage );
+		//			}
+		//		} );
+		UserScriptSessionFilter filter = new UserScriptSessionFilter( "user", "faisal" );
+		Browser.withAllSessionsFiltered( filter, new Runnable() {
 			public void run()
 			{
+				System.out.println( "found scriptSession user >> faisal" );
 				ScriptSessions.addFunctionCall( "newMessage", newMessage );
 			}
 		} );

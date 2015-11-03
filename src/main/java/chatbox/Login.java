@@ -26,6 +26,7 @@ public class Login
 			HttpServletRequest request = webContext.getHttpServletRequest();
 			HttpSession session = request.getSession();
 			session.setAttribute( "username", userName );
+			webContext.getScriptSession().setAttribute( "user", userName );
 			String scriptId = webContext.getScriptSession().getId();
 			session.setAttribute( "scriptSessionId", scriptId );
 			updateUsersOnline();

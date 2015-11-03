@@ -3,8 +3,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Chatroom</title>
-<link href="styles.css" rel="stylesheet" type="text/css" />
+<title>Chatbox</title>
+<link href="css/chat.css" rel="stylesheet" type="text/css" />
 <%
 	if (session.getAttribute("username") == null
 			|| session.getAttribute("username").equals("")) {
@@ -86,7 +86,7 @@
   <div id="maincontainer">
     <div id="topsection">
       <div class="innertube">
-        <h1>Chatroom</h1>
+        <h1>Chatbox</h1>
         <h4>
           Welcome <i><%=(String) session.getAttribute("username")%></i>
         </h4>

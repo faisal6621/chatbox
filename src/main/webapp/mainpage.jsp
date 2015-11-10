@@ -19,6 +19,7 @@
 <script type='text/javascript' src='dwr/util.js'></script>
 <script type="text/javascript">
 	dwr.engine.setActiveReverseAjax(true);
+	Login.updateUserSession();
 
 	function logout() {
 		Login.doLogout(showLoginScreen);

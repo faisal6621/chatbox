@@ -52,7 +52,7 @@ public class Login
 		}
 		catch ( Exception e )
 		{
-			System.out.println( e.toString() );
+			e.printStackTrace();
 		}
 		updateUsersOnline();
 	}
@@ -71,5 +71,22 @@ public class Login
 	{
 		UserDatabase userDb = UserDatabase.getInstance();
 		return userDb.getLoggedInUsers();
+	}
+
+	public void updateUserSession()
+	{
+		System.out.println( "in update user session" );
+		try
+		{
+			WebContext context = WebContextFactory.get();
+			HttpSession session = context.getSession();
+			String username = Util.getCurrentUserName( session );
+			System.out.println( "found user >> " + username );
+			context.getScriptSession().setAttribute( "user", username );
+		}
+		catch ( Exception ex )
+		{
+			ex.printStackTrace();
+		}
 	}
 }

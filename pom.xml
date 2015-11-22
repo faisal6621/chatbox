@@ -11,6 +11,13 @@
       <version>6.0</version>
       <scope>provided</scope>
     </dependency>
+    <!-- Spring - MVC -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>4.2.3.RELEASE</version>
+    </dependency>
+    <!-- DWR -->
     <dependency>
       <groupId>org.directwebremoting</groupId>
       <artifactId>dwr</artifactId>

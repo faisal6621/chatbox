@@ -30,7 +30,7 @@ public class Login
 			String scriptId = webContext.getScriptSession().getId();
 			session.setAttribute( "scriptSessionId", scriptId );
 			updateUsersOnline();
-			return "mainpage.jsp";
+			return "mainpage";
 		}
 		else
 		{

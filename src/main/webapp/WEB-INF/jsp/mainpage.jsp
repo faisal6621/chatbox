@@ -5,14 +5,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Chatbox</title>
 <link href="css/chat.css" rel="stylesheet" type="text/css" />
-<%
-	if (session.getAttribute("username") == null
-			|| session.getAttribute("username").equals("")) {
+<%/* 
+	if (session.getAttribute("userName") == null
+			|| session.getAttribute("userName").equals("")) {
 		//if not logged in and trying to access this page
 		//do nothing, browser shows empty page
 		return;
 	}
-%>
+ */%>
 <script type='text/javascript' src='dwr/engine.js'></script>
 <script type='text/javascript' src='dwr/interface/Login.js'></script>
 <script type='text/javascript' src='dwr/interface/ChatRoomDatabase.js'></script>
@@ -26,7 +26,7 @@
 	}
 
 	function showLoginScreen() {
-		window.location.href = 'index.jsp';
+		window.location.href = 'logout';
 	}
 
 	function showUsersOnline() {
@@ -89,7 +89,7 @@
       <div class="innertube">
         <h1>Chatbox</h1>
         <h4>
-          Welcome <i><%=(String) session.getAttribute("username")%></i>
+          Welcome <i><%=(String) session.getAttribute("userName")%></i>
         </h4>
       </div>
     </div>

@@ -5,34 +5,24 @@ import java.util.Vector;
 
 public class UserDatabase
 {
-	private static UserDatabase	userDatabase	= new UserDatabase();
-	private List<String>		loggedInUsers	= new Vector<String>();
+	private static List<String>	loggedInUsers	= new Vector<String>();
 
-	private UserDatabase()
-	{
-	}
-
-	public static UserDatabase getInstance()
-	{
-		return userDatabase;
-	}
-
-	public List<String> getLoggedInUsers()
+	public static List<String> getLoggedInUsers()
 	{
 		return loggedInUsers;
 	}
 
-	public boolean isUserLogged( String userName )
+	public static boolean isUserLogged( String userName )
 	{
 		return loggedInUsers.contains( userName );
 	}
 
-	public void login( String userName )
+	public static void login( String userName )
 	{
 		loggedInUsers.add( userName );
 	}
 
-	public void logout( String userName )
+	public static void logout( String userName )
 	{
 		loggedInUsers.remove( userName );
 	}

@@ -18,10 +18,9 @@ public class Login
 
 	public String doLogin( String userName )
 	{
-		UserDatabase userDb = UserDatabase.getInstance();
-		if( !userDb.isUserLogged( userName ) )
+		if( !UserDatabase.isUserLogged( userName ) )
 		{
-			userDb.login( userName );
+			UserDatabase.login( userName );
 			WebContext webContext = WebContextFactory.get();
 			HttpServletRequest request = webContext.getHttpServletRequest();
 			HttpSession session = request.getSession();
@@ -45,7 +44,7 @@ public class Login
 			WebContext ctx = WebContextFactory.get();
 			HttpSession session = ctx.getSession();
 			String userName = Util.getCurrentUserName( session );
-			UserDatabase.getInstance().logout( userName );
+			UserDatabase.logout( userName );
 			session.removeAttribute( "username" );
 			session.removeAttribute( "scriptSessionId" );
 			session.invalidate();
@@ -69,8 +68,7 @@ public class Login
 
 	public List<String> getUsersOnline()
 	{
-		UserDatabase userDb = UserDatabase.getInstance();
-		return userDb.getLoggedInUsers();
+		return UserDatabase.getLoggedInUsers();
 	}
 
 	public void updateUserSession()

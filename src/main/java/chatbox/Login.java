@@ -45,7 +45,7 @@ public class Login
 			HttpSession session = ctx.getSession();
 			String userName = Util.getCurrentUserName( session );
 			UserDatabase.logout( userName );
-			session.removeAttribute( "username" );
+			session.removeAttribute( "userName" );
 			session.removeAttribute( "scriptSessionId" );
 			session.invalidate();
 		}
@@ -79,7 +79,6 @@ public class Login
 			WebContext context = WebContextFactory.get();
 			HttpSession session = context.getSession();
 			String username = Util.getCurrentUserName( session );
-			System.out.println( "found user >> " + username );
 			context.getScriptSession().setAttribute( "user", username );
 		}
 		catch ( Exception ex )

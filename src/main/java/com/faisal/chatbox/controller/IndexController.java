@@ -24,7 +24,6 @@ public class IndexController
 	public String login( HttpServletRequest request, HttpSession session )
 	{
 		String userName = request.getParameter( "userName" );
-		System.out.println( "in login >> " + userName );
 		session.setAttribute( "userName", userName );
 		UserDatabase.login( userName );
 		return "redirect:mainpage";
@@ -35,7 +34,6 @@ public class IndexController
 	{
 		System.out.println( "in mainpage" );
 		String userName = (String) session.getAttribute( "userName" );
-		System.out.println( "user :: " + userName );
 		if( userName == null ) { return "redirect:."; }
 		return "mainpage";
 	}
@@ -44,16 +42,15 @@ public class IndexController
 	public String logout( HttpServletRequest request, HttpSession session )
 	{
 		String userName = (String) session.getAttribute( "userName" );
-		System.out.println( "in logout >> " + userName );
 		UserDatabase.logout( userName );
 		try
 		{
 			request.logout();
+			session.invalidate();
 		}
 		catch ( ServletException ex )
 		{
 			ex.printStackTrace();
-			session.invalidate();
 		}
 		return "index";
 	}

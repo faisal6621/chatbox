@@ -114,7 +114,7 @@
           <tbody id="usersOnline">
           </tbody>
         </table>
-        <input id="logoutButton" type="button" value="Logout" onclick="logout();return false;">
+        <input id="logoutButton" type="button" value="Logout" onclick="location.href='logout'"><%-- logout();return false; --%>
       </div>
     </div>
     <div id="footer"></div>

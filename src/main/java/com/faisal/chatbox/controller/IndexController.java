@@ -35,6 +35,7 @@ public class IndexController
 	{
 		System.out.println( "in mainpage" );
 		String userName = (String) session.getAttribute( "userName" );
+		System.out.println( "user :: " + userName );
 		if( userName == null ) { return "redirect:."; }
 		return "mainpage";
 	}

@@ -23,7 +23,7 @@ public class Util
 
 	public static String getCurrentUserName( HttpSession session )
 	{
-		String userName = (String) session.getAttribute( "username" );
+		String userName = (String) session.getAttribute( "userName" );
 		return userName;
 	}
 }

@@ -16,6 +16,7 @@ public class Login
 	{
 	}
 
+	@Deprecated
 	public String doLogin( String userName )
 	{
 		if( !UserDatabase.isUserLogged( userName ) )
@@ -46,8 +47,6 @@ public class Login
 			String userName = Util.getCurrentUserName( session );
 			UserDatabase.logout( userName );
 			session.removeAttribute( "userName" );
-			session.removeAttribute( "scriptSessionId" );
-			session.invalidate();
 		}
 		catch ( Exception e )
 		{
@@ -80,6 +79,7 @@ public class Login
 			HttpSession session = context.getSession();
 			String username = Util.getCurrentUserName( session );
 			context.getScriptSession().setAttribute( "user", username );
+			updateUsersOnline();
 		}
 		catch ( Exception ex )
 		{

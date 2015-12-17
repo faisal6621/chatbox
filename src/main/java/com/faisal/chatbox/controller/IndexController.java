@@ -41,8 +41,6 @@ public class IndexController
 	@RequestMapping( value = "/logout", method = RequestMethod.GET )
 	public String logout( HttpServletRequest request, HttpSession session )
 	{
-		String userName = (String) session.getAttribute( "userName" );
-		UserDatabase.logout( userName );
 		try
 		{
 			request.logout();

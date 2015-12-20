@@ -12,10 +12,6 @@ import org.directwebremoting.WebContextFactory;
 
 public class Login
 {
-	public Login()
-	{
-	}
-
 	@Deprecated
 	public String doLogin( String userName )
 	{
@@ -38,6 +34,7 @@ public class Login
 		}
 	}
 
+	@Deprecated
 	public void doLogout()
 	{
 		try
@@ -55,6 +52,7 @@ public class Login
 		updateUsersOnline();
 	}
 
+	@Deprecated
 	private void updateUsersOnline()
 	{
 		Browser.withAllSessions( new Runnable() {
@@ -70,6 +68,7 @@ public class Login
 		return UserDatabase.getLoggedInUsers();
 	}
 
+	@Deprecated
 	public void updateUserSession()
 	{
 		System.out.println( "in update user session" );

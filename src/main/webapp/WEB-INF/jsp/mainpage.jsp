@@ -5,21 +5,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Chatbox</title>
 <link href="css/chat.css" rel="stylesheet" type="text/css" />
-<%/* 
-	if (session.getAttribute("userName") == null
-			|| session.getAttribute("userName").equals("")) {
-		//if not logged in and trying to access this page
-		//do nothing, browser shows empty page
-		return;
-	}
- */%>
 <script type='text/javascript' src='dwr/engine.js'></script>
 <script type='text/javascript' src='dwr/interface/Login.js'></script>
 <script type='text/javascript' src='dwr/interface/ChatRoomDatabase.js'></script>
 <script type='text/javascript' src='dwr/util.js'></script>
 <script type="text/javascript">
 	dwr.engine.setActiveReverseAjax(true);
-	Login.updateUserSession();
 
 	function logout() {
 		Login.doLogout(showLoginScreen);
@@ -114,7 +105,7 @@
           <tbody id="usersOnline">
           </tbody>
         </table>
-        <input id="logoutButton" type="button" value="Logout" onclick="logout();return false;">
+        <input id="logoutButton" type="button" value="Logout" onclick="location.href='logout';"><%-- logout();return false; --%>
       </div>
     </div>
     <div id="footer"></div>

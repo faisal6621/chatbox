@@ -11,9 +11,4 @@
     <mvc:jsp prefix="/WEB-INF/jsp/" suffix=".jsp" />
   </mvc:view-resolvers>
   <mvc:resources location="css/" mapping="css/**" />
-  <!-- <security:http>
-    <security:intercept-url pattern="/mainpage" access="hasRole('USER')" />
-    <security:form-login />
-    <security:logout />
-  </security:http> -->
 </beans>

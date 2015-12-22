@@ -5,12 +5,20 @@
   <!-- needed for ContextLoaderListener -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>WEB-INF/config/spring-config.xml</param-value>
+    <param-value>WEB-INF/config/spring-security.xml</param-value>
   </context-param>
   <!-- Bootstraps the root web application context before servlet initialization -->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
+  <!-- <filter>
+	<filter-name>springSecurityFilterChain</filter-name>
+	<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>pre-defined
+  </filter>
+  <filter-mapping>
+	<filter-name>springSecurityFilterChain</filter-name>
+	<url-pattern>/*</url-pattern>
+  </filter-mapping> -->
   <!-- The front controller of this Spring Web application, responsible for handling all application requests -->
   <servlet>
     <servlet-name>springDispatcherServlet</servlet-name>
@@ -38,6 +46,7 @@
       <param-name>activeReverseAjaxEnabled</param-name>
       <param-value>true</param-value>
     </init-param>
+    <load-on-startup>2</load-on-startup>
   </servlet>
   <servlet-mapping>
     <servlet-name>dwr-invoker</servlet-name>

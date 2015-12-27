@@ -8,19 +8,6 @@
 <script type='text/javascript' src='dwr/engine.js'></script>
 <script type='text/javascript' src='dwr/interface/Login.js'></script>
 <script type='text/javascript' src='dwr/util.js'></script>
-<%--
-<script type="text/javascript">
-	function login() {
-		var userNameInput = dwr.util.byId('userName');
-		var userName = userNameInput.value;
-		Login.doLogin(userName, loginResult);
-	}
-
-	function loginResult(newPage) {
-		window.location.href = newPage;
-	}
-</script>
- --%>
 </head>
 <body>
   <h1>Chatbox - Login</h1>

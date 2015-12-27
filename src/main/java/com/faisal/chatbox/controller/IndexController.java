@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import chatbox.UserDatabase;
-import chatbox.Util;
 
 @Controller
 @RequestMapping( value = "/" )
@@ -20,11 +19,12 @@ public class IndexController
 	@RequestMapping( method = RequestMethod.GET )
 	public String index( HttpSession session )
 	{
-		String userName = Util.getCurrentUserName( session );
-		if( userName != null ) { return "redirect:mainpage"; }
+		//		String userName = Util.getCurrentUserName( session );
+		//		if( userName != null ) { return "redirect:mainpage"; }
 		return "index";
 	}
 
+	@Deprecated
 	@RequestMapping( value = "/login", method = RequestMethod.POST )
 	public String login( HttpServletRequest request, HttpSession session )
 	{
@@ -37,20 +37,27 @@ public class IndexController
 	}
 
 	@RequestMapping( value = "/mainpage", method = RequestMethod.GET )
-	public String mainpage( HttpSession session )
+	public String mainpage( HttpServletRequest request )// HttpSession session
 	{
 		System.out.println( "in mainpage" );
-		String userName = Util.getCurrentUserName( session );
-		if( userName == null ) { return "redirect:."; }
-		if( UserDatabase.isUserLogged( userName ) )
+		String userName = request.getUserPrincipal().getName();
+		System.out.println( "user :: " + userName );
+		//		if( userName == null )
+		//		{
+		//			System.out.println( "redirecting to login" );
+		//			return "redirect:.";
+		//		}
+		if( !UserDatabase.isUserLogged( userName ) )
 		{
-			updateOnlineUsers();
-			return "mainpage";
+			System.out.println( "new login" );
+			UserDatabase.login( userName );
 		}
-		else
-		{
-			return "redirect:.";
-		}
+		//		else
+		//		{
+		//			return "redirect:.";
+		//		}
+		updateOnlineUsers();
+		return "mainpage";
 	}
 
 	@RequestMapping( value = "/logout", method = RequestMethod.GET )
@@ -58,9 +65,8 @@ public class IndexController
 	{
 		try
 		{
-			String userName = Util.getCurrentUserName( session );
+			String userName = request.getUserPrincipal().getName();
 			UserDatabase.logout( userName );
-			session.removeAttribute( "userName" );
 			session.invalidate();
 			request.logout();
 		}

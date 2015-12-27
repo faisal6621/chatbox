@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <b:beans xmlns="http://www.springframework.org/schema/security" xmlns:b="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
-	
+  <b:bean name="loginService" class="com.faisal.chatbox.security.LoginService" />
+  <http>
+    <intercept-url pattern="/mainpage" access="hasRole('USER')" />
+    <form-login login-page="/" login-processing-url="/login" default-target-url="/mainpage" username-parameter="userName" />
+    <session-management>
+      <concurrency-control error-if-maximum-exceeded="true" max-sessions="1" expired-url="/" />
+    </session-management>
+  </http>
+  <authentication-manager>
+    <authentication-provider user-service-ref="loginService" />
+  </authentication-manager>
 </b:beans>

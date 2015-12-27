@@ -80,7 +80,7 @@
       <div class="innertube">
         <h1>Chatbox</h1>
         <h4>
-          Welcome <i><%=(String) session.getAttribute("userName")%></i>
+          Welcome <i><%=request.getUserPrincipal().getName()%></i>
         </h4>
       </div>
     </div>
@@ -105,7 +105,8 @@
           <tbody id="usersOnline">
           </tbody>
         </table>
-        <input id="logoutButton" type="button" value="Logout" onclick="location.href='logout';"><%-- logout();return false; --%>
+        <input id="logoutButton" type="button" value="Logout" onclick="location.href='logout';">
+        <%-- logout();return false; --%>
       </div>
     </div>
     <div id="footer"></div>

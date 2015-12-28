@@ -24,16 +24,19 @@ public class IndexController
 		return "index";
 	}
 
-	@Deprecated
-	@RequestMapping( value = "/login", method = RequestMethod.POST )
+	@RequestMapping( value = "/login", method = RequestMethod.GET ,params="error")
 	public String login( HttpServletRequest request, HttpSession session )
 	{
-		String userName = request.getParameter( "userName" );
-		if( userName == null || userName.trim().equals( "" ) ) { return "redirect:."; }
-		if( UserDatabase.isUserLogged( userName ) ) { return "redirect:."; }
-		session.setAttribute( "userName", userName );
-		UserDatabase.login( userName );
-		return "redirect:mainpage";
+//		String userName = request.getParameter( "userName" );
+//		if( userName == null || userName.trim().equals( "" ) ) { return "redirect:."; }
+//		if( UserDatabase.isUserLogged( userName ) ) { return "redirect:."; }
+//		session.setAttribute( "userName", userName );
+//		UserDatabase.login( userName );
+//		return "redirect:mainpage";
+	    System.out.println( "in login error");
+	    Exception exception = (Exception) session.getAttribute( "SPRING_SECURITY_LAST_EXCEPTION" );
+	    System.out.println( exception.getMessage() );
+	    return "index";
 	}
 
 	@RequestMapping( value = "/mainpage", method = RequestMethod.GET )
@@ -63,6 +66,7 @@ public class IndexController
 	@RequestMapping( value = "/logout", method = RequestMethod.GET )
 	public String logout( HttpServletRequest request, HttpSession session )
 	{
+	    System.out.println( "in logout" );
 		try
 		{
 			String userName = request.getUserPrincipal().getName();

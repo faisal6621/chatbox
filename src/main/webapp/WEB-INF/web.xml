@@ -7,6 +7,9 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>WEB-INF/config/spring-security.xml</param-value>
   </context-param>
+  <listener>
+	<listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
+  </listener>
   <!-- Bootstraps the root web application context before servlet initialization -->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

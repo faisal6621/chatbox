@@ -7,7 +7,7 @@
     <intercept-url pattern="/mainpage" access="hasRole('USER')" />
     <form-login login-page="/" login-processing-url="/login" authentication-failure-url="/login?error" default-target-url="/mainpage" username-parameter="userName" />
     <session-management>
-      <concurrency-control error-if-maximum-exceeded="true" max-sessions="1" expired-url="/" />
+      <concurrency-control error-if-maximum-exceeded="true" max-sessions="1" expired-url="/login?error" />
     </session-management>
     <csrf disabled="true" />
   </http>

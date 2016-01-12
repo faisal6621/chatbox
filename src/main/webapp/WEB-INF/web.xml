@@ -7,6 +7,7 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>WEB-INF/config/spring-security.xml</param-value>
   </context-param>
+  <!-- Spring Security Session Listener -->
   <listener>
 	<listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
   </listener>

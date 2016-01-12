@@ -17,10 +17,13 @@ import chatbox.UserDatabase;
 public class IndexController
 {
 	@RequestMapping( method = RequestMethod.GET )
-	public String index( HttpSession session )
+	public String index( HttpServletRequest request )
 	{
-		//		String userName = Util.getCurrentUserName( session );
-		//		if( userName != null ) { return "redirect:mainpage"; }
+	    if( request.getUserPrincipal() != null )
+	    {
+	        String userName = request.getUserPrincipal().getName();
+	        if( UserDatabase.isUserLogged( userName ) ) { return "redirect:mainpage"; }
+	    }
 		return "index";
 	}
 

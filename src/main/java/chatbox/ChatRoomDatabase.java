@@ -39,21 +39,20 @@ public class ChatRoomDatabase
 		return chatContent;
 	}
 
-    public void postNewMessage( final String newMessage )
-    {
-        Browser.withAllSessions( new Runnable()
-        {
-            public void run()
-            {
-                ScriptSessions.addFunctionCall( "newMessage", newMessage );
-            }
-        } );
-        //		UserScriptSessionFilter filter = new UserScriptSessionFilter( "user", "faisal" );
-        //		Browser.withAllSessionsFiltered( filter, new Runnable() {
-        //			public void run()
-        //			{
-        //				ScriptSessions.addFunctionCall( "newMessage", newMessage );
-        //			}
-        //		} );
-    }
+	public void postNewMessage( final String newMessage )
+	{
+		Browser.withAllSessions( new Runnable() {
+			public void run()
+			{
+				ScriptSessions.addFunctionCall( "newMessage", newMessage );
+			}
+		} );
+		//		UserScriptSessionFilter filter = new UserScriptSessionFilter( "user", "faisal" );
+		//		Browser.withAllSessionsFiltered( filter, new Runnable() {
+		//			public void run()
+		//			{
+		//				ScriptSessions.addFunctionCall( "newMessage", newMessage );
+		//			}
+		//		} );
+	}
 }

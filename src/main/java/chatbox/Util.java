@@ -14,13 +14,18 @@ public class Util
 
 	public static String getCurrentUserName()
 	{
-		//get user name from session
+		//get user name from UserPrincipal
 		WebContext ctx = WebContextFactory.get();
 		HttpServletRequest request = ctx.getHttpServletRequest();
-		HttpSession session = request.getSession();
-		return getCurrentUserName( session );
+		String user = null;
+		if( request.getUserPrincipal() != null )
+		{
+			user = request.getUserPrincipal().getName();
+		}
+		return user;
 	}
 
+	@Deprecated
 	public static String getCurrentUserName( HttpSession session )
 	{
 		String userName = (String) session.getAttribute( "userName" );

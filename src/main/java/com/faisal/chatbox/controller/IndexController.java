@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.directwebremoting.Browser;
 import org.directwebremoting.ScriptSessions;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -19,27 +20,20 @@ public class IndexController
 	@RequestMapping( method = RequestMethod.GET )
 	public String index( HttpServletRequest request )
 	{
-	    if( request.getUserPrincipal() != null )
-	    {
-	        String userName = request.getUserPrincipal().getName();
-	        if( UserDatabase.isUserLogged( userName ) ) { return "redirect:mainpage"; }
-	    }
+		if( request.getUserPrincipal() != null )
+		{
+			String userName = request.getUserPrincipal().getName();
+			if( UserDatabase.isUserLogged( userName ) ) { return "redirect:mainpage"; }
+		}
 		return "index";
 	}
 
-	@RequestMapping( value = "/login", method = RequestMethod.GET ,params="error")
-	public String login( HttpServletRequest request, HttpSession session )
+	@RequestMapping( value = "/login", method = RequestMethod.GET, params = "error" )
+	public String login( HttpSession session, Model model )
 	{
-//		String userName = request.getParameter( "userName" );
-//		if( userName == null || userName.trim().equals( "" ) ) { return "redirect:."; }
-//		if( UserDatabase.isUserLogged( userName ) ) { return "redirect:."; }
-//		session.setAttribute( "userName", userName );
-//		UserDatabase.login( userName );
-//		return "redirect:mainpage";
-	    System.out.println( "in login error");
-	    Exception exception = (Exception) session.getAttribute( "SPRING_SECURITY_LAST_EXCEPTION" );
-	    System.out.println( exception.getMessage() );
-	    return "index";
+		Exception exception = (Exception) session.getAttribute( "SPRING_SECURITY_LAST_EXCEPTION" );
+		model.addAttribute( "error", exception.getMessage() );
+		return "index";
 	}
 
 	@RequestMapping( value = "/mainpage", method = RequestMethod.GET )
@@ -69,7 +63,7 @@ public class IndexController
 	@RequestMapping( value = "/logout", method = RequestMethod.GET )
 	public String logout( HttpServletRequest request, HttpSession session )
 	{
-	    System.out.println( "in logout" );
+		System.out.println( "in logout" );
 		try
 		{
 			String userName = request.getUserPrincipal().getName();

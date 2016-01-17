@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +12,9 @@
 </head>
 <body>
   <h1>Chatbox - Login</h1>
+  <c:if test="${not empty error }">
+    <p>${error }</p>
+  </c:if>
   <sf:form servletRelativeAction="login" htmlEscape="true">
     <table style="border-collapse: collapse;">
       <tr>
